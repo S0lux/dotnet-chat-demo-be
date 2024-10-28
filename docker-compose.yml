@@ -3,9 +3,15 @@
     image: dotnet-simple-chat-be
     environment:
       ConnectionStrings__DefaultConnection: Host=postgres-db;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      AllowedOrigins: ${ALLOWED_ORIGINS}
     build:
       context: .
       dockerfile: dotnet-simple-chat-be/Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${HOME}/.aspnet/https:/https:ro
 
   postgres-db:
     image: postgres:16.4
