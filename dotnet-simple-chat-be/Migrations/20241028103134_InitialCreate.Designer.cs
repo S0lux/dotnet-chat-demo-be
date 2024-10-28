@@ -12,7 +12,7 @@ using dotnet_simple_chat_be.Data;
 namespace dotnet_simple_chat_be.Migrations
 {
     [DbContext(typeof(ChatContext))]
-    [Migration("20241028092708_InitialCreate")]
+    [Migration("20241028103134_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
