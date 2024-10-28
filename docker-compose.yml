@@ -1,0 +1,22 @@
+﻿services:
+  dotnet-simple-chat-be:
+    image: dotnet-simple-chat-be
+    environment:
+      ConnectionStrings__DefaultConnection: Host=postgres-db;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+    build:
+      context: .
+      dockerfile: dotnet-simple-chat-be/Dockerfile
+
+  postgres-db:
+    image: postgres:16.4
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - dotnet-chat-demo:/var/lib/postgresql/data
+      
+volumes:
+  dotnet-chat-demo:

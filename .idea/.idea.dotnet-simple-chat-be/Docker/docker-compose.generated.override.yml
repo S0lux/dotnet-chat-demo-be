@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  dotnet-simple-chat-be:
+    build:
+      context: "/home/solux/RiderProjects/dotnet-simple-chat-be"
+      dockerfile: "dotnet-simple-chat-be/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/dotnet-simple-chat-be.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "dotnet-simple-chat-be:dev"
+    ports: []
+    volumes:
+    - "/home/solux/.nuget/packages:/home/app/.nuget/packages"
+    - "/home/solux/RiderProjects/dotnet-simple-chat-be/dotnet-simple-chat-be:/app:rw"
+    - "/home/solux/RiderProjects/dotnet-simple-chat-be:/src:rw"
+    working_dir: "/app"
